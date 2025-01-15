@@ -1,54 +1,23 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
-import { EmblaOptionsType } from "embla-carousel";
-import useEmblaCarousel from "embla-carousel-react";
-import { Thumb } from "@/lib/EmblaCarouselThumbsButton";
+import React, { useState } from "react";
 import { workLists } from "@/data";
-import Image from "next/legacy/image";
 import TechStack from "./ui/TechStack";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import Embla from "./ui/Embla";
 
 interface ProjectProps {
   projectName: string;
-  options?: EmblaOptionsType;
 }
 
 const Project: React.FC<ProjectProps> = (props) => {
-  const { projectName, options } = props;
+  const { projectName } = props;
   const [titleModal, setTitleModal] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options);
-  const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
-    containScroll: "keepSnaps",
-    dragFree: true,
-  });
 
   const getProject = workLists.find((data) => data.name === projectName);
 
   const slides = workLists.find(
     (data) => data.name === projectName
   )?.extraPhoto;
-
-  const onThumbClick = useCallback(
-    (index: number) => {
-      if (!emblaMainApi || !emblaThumbsApi) return;
-      emblaMainApi.scrollTo(index);
-    },
-    [emblaMainApi, emblaThumbsApi]
-  );
-
-  const onSelect = useCallback(() => {
-    if (!emblaMainApi || !emblaThumbsApi) return;
-    setSelectedIndex(emblaMainApi.selectedScrollSnap());
-    emblaThumbsApi.scrollTo(emblaMainApi.selectedScrollSnap());
-  }, [emblaMainApi, emblaThumbsApi, setSelectedIndex]);
-
-  useEffect(() => {
-    if (!emblaMainApi) return;
-    onSelect();
-
-    emblaMainApi.on("select", onSelect).on("reInit", onSelect);
-  }, [emblaMainApi, onSelect]);
 
   return (
     <>
@@ -76,13 +45,19 @@ const Project: React.FC<ProjectProps> = (props) => {
       <div className="relative -top-2 text-textPrimary text-3xl py-2 px-5">
         {"(" + getProject?.description + ")"}
       </div>
-      <div className="text-textPrimary flex flex-col pl-10 gap-5 text-2xl sm:text-3xl">
-        <div className="relative -left-5 -bottom-2">使用方式：</div>
-        {getProject?.instruction?.map((data, idx) => (
-          <div key={idx} className="pl-5">
-            {idx + 1}.{data}
-          </div>
-        ))}
+      {/* 使用方法container */}
+      <div className="flex flex-row px-5">
+        <div className="hidden lg:flex justify-center items-center w-[100%] sm:w-[80%] mx-auto">
+          <Embla photos={slides} />
+        </div>
+        <div className="text-textPrimary flex flex-col pl-10 gap-5 text-2xl sm:text-3xl">
+          <div className="relative -left-5 -bottom-2">使用方式：</div>
+          {getProject?.instruction?.map((data, idx) => (
+            <div key={idx} className="pl-5">
+              {idx + 1}.{data}
+            </div>
+          ))}
+        </div>
       </div>
       <br />
       <TechStack tech={getProject?.techStack} />
@@ -93,46 +68,14 @@ const Project: React.FC<ProjectProps> = (props) => {
           target="_blank"
           className="hover:text-red-500"
         >
-          <HiOutlineExternalLink className="text-4xl  w-full mx-auto" />
+          <HiOutlineExternalLink className="text-4xl w-full mx-auto" />
           <div className="">網址</div>
         </a>
       </div>
       <br />
-      <div className="flex justify-center items-center w-[100%] sm:w-[80%] mx-auto">
-        <div className="embla pb-5 pt-2 px-1 sm:px-0">
-          <div className="embla__viewport" ref={emblaMainRef}>
-            <div className="embla__container">
-              {slides?.map((data, idx) => (
-                <div className="embla__slide" key={idx}>
-                  <div className="embla__slide__number relative overflow-hidden rounded-xl">
-                    <Image
-                      className="absolute top-0 w-full rounded-xl"
-                      src={data}
-                      alt="picture of the project"
-                      objectFit="fill"
-                      layout="fill"
-                      priority={true}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="embla-thumbs">
-            <div className="embla-thumbs__viewport" ref={emblaThumbsRef}>
-              <div className="embla-thumbs__container">
-                {slides?.map((data, idx) => (
-                  <Thumb
-                    key={idx}
-                    onClick={() => onThumbClick(idx)}
-                    selected={idx === selectedIndex}
-                    index={idx}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* mobile view */}
+      <div className="flex lg:hidden justify-center items-center w-[100%] sm:w-[80%] mx-auto">
+        <Embla photos={slides} />
       </div>
     </>
   );

@@ -11,8 +11,8 @@ function Work() {
   const lists = workLists;
 
   return (
-    <div className="mx-auto h-screen">
-      <div className="flex justify-center items-center flex-col h-full">
+    <div className="relative top-[156px] mx-auto max-w-7xl">
+      <div className="relative w-full">
         <div className="flex flex-row  max-w-7xl w-full overflow-hidden h-[400px]">
           {/* left box */}
           <div className="flex-1 w-0 hidden pl-0 sm:block sm:pl-3">
@@ -36,7 +36,7 @@ function Work() {
             )}
           </div>
           {/* right box */}
-          <div className="flex flex-1 flex-col flex-nowrap p-5 overflow-y-auto ">
+          <div className="flex flex-1 flex-col flex-nowrap p-5 overflow-y-auto">
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 100 }}
@@ -54,7 +54,7 @@ function Work() {
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 100 }}
               transition={{ type: "linear", duration: 2 }}
-              className="flex flex-col"
+              className="flex flex-col just"
             >
               {workLists.map((data, idx) => (
                 <Link href={`/work/${data.name}`} key={idx} className="group">
