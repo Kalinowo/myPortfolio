@@ -16,10 +16,6 @@ export default async function Page({
     return null;
   }
 
-  const target = workLists.filter(
-    (data) => data.name === decodeURIComponent(slug)
-  );
-
   return (
     <div className="relative top-[156px] mx-auto max-w-7xl">
       <div className="w-full">

@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import useMousePosition from "@/lib/useMousePosition";
-import Kygore from "@/components/ui/kygore";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const { x, y } = useMousePosition();

@@ -6,8 +6,8 @@ import Image from "next/legacy/image";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Link from "next/link";
 
-function work() {
-  const [select, setSelect] = React.useState<number>(0);
+function Work() {
+  const [select, setSelect] = useState<number>(0);
   const lists = workLists;
 
   return (
@@ -80,4 +80,4 @@ function work() {
   );
 }
 
-export default work;
+export default Work;
