@@ -31,7 +31,7 @@ function About() {
         <div className="text-textPrimary text-xl pt-4 indent-5">
           我的名字是林楷又，是一位喜歡玩遊戲的Gameboy，第一個夢想是當上職業電競選手。
         </div>
-        <div className="text-textPrimary text-xl pt-4">
+        <div className="text-textPrimary text-xl pt-4 indent-5">
           2021年開始自學網頁開發，在這個終身學習(lifelong
           learning)的領域中，不斷挑戰、成長以及獲得成就感是我所追求的。能與電腦長時間工作也向來被我視為一種天賦，也是我所熱愛的事。網頁開發工程師是我的第二個夢想，在未來的道路，我將如同遊戲一般在這個領域，追求超神。
         </div>

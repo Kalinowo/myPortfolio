@@ -11,7 +11,7 @@ export const workLists = [
       "多出一個Post的按鈕(圖1)可上傳照片",
       "新增圖片介面(圖3)",
     ],
-    techStack: ["nextjs", "tailwindcss"],
+    techStack: ["nextjs", "tailwindcss", "mongodb"],
   },
   {
     name: "Ro Gacha Simulator",
