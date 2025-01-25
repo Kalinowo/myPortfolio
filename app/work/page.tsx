@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import ProjectLists from "@/components/work/ProjectLists";
-import Project from "@/components/work/Project";
 
 function Work() {
   return (
