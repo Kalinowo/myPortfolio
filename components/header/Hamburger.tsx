@@ -9,7 +9,7 @@ interface HamburgerProps {
 function Hamburger({ handleClick }: HamburgerProps) {
   return (
     <div className="fixed left-0 h-full w-full mx-auto p-20 font-bold text-4xl bg-primary">
-      <div className="flex flex-col gap-8 dark:text-white">
+      <div className="text-textPrimary flex flex-col gap-8">
         <motion.div
           className=""
           initial={{ y: -100, opacity: 0 }}

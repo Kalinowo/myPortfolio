@@ -1,5 +1,5 @@
 import React from "react";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { TextGenerateEffect } from "@/components/home/TextGenerateEffect";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import Link from "next/link";
 

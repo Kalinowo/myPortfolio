@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { workLists } from "@/data";
-import TechStack from "./ui/TechStack";
+import TechStack from "./TechStack";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import Embla from "./ui/Embla";
+import Embla from "./Embla";
 
 interface ProjectProps {
   projectName: string;

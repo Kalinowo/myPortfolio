@@ -1,6 +1,6 @@
 import { workLists } from "@/data";
 import { notFound } from "next/navigation";
-import Project from "@/components/Project";
+import Project from "@/components/work/Project";
 
 const allowedSlugs = workLists.map((route) => encodeURIComponent(route.name));
 
