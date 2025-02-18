@@ -72,14 +72,14 @@ body {
 }
 .embla__slide__number {
   border: solid rgb(85, 85, 85);
-  border-radius: 1.8rem;
+  border-radius: 15px;
   font-size: 4rem;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 0;
-  padding-bottom: 60%;
+  padding-bottom: 55%;
   user-select: none;
 }
 /* 縮圖按鈕 */
@@ -99,16 +99,16 @@ body {
 }
 .embla-thumbs__slide {
   position: relative;
-  flex: 0 0 15%;
+  flex: 0 0 10%;
   height: 0;
-  padding-bottom: 15%;
+  padding-bottom: 10%;
   min-width: 0;
   padding-left: var(--thumbs-slide-spacing);
 }
 
 .embla-thumbs__slide__number {
   position: absolute;
-  border-radius: 1.8rem;
+  border-radius: 30%;
   -webkit-tap-highlight-color: rgba(49, 49, 49, 0.5);
   -webkit-appearance: none;
   appearance: none;
@@ -120,7 +120,7 @@ body {
   border: 0;
   margin: 0;
   border: solid rgb(85, 85, 85);
-  font-size: 1.8rem;
+  font-size: 20px;
   font-weight: 600;
   color: rgb(101, 101, 101);
   display: flex;

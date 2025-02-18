@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { EmblaOptionsType } from "embla-carousel";
 import { Thumb } from "@/lib/EmblaCarouselThumbsButton";
@@ -7,11 +7,12 @@ import { Thumb } from "@/lib/EmblaCarouselThumbsButton";
 interface EmblaProps {
   options?: EmblaOptionsType;
   photos?: string[];
+  selectedIndex: number;
+  setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function Embla(props: EmblaProps) {
-  const { options, photos } = props;
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const { options, photos, selectedIndex, setSelectedIndex } = props;
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options);
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: "keepSnaps",
@@ -50,9 +51,9 @@ function Embla(props: EmblaProps) {
                   className="absolute top-0 w-full rounded-xl"
                   src={data}
                   alt="picture of the project"
-                  objectFit="fill"
-                  layout="fill"
-                  priority={true}
+                  style={{ objectFit: "contain" }}
+                  fill
+                  priority
                 />
               </div>
             </div>

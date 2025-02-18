@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { workLists } from "@/data";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Link from "next/link";
 
 function ProjectLists() {
   const [select, setSelect] = useState<number>(0);
-  const lists = workLists;
+
   return (
     <div className="relative w-full">
       <div className="flex flex-row  max-w-7xl w-full overflow-hidden h-[400px]">
@@ -25,9 +25,9 @@ function ProjectLists() {
                     className="absolute top-0 w-full rounded-xl"
                     src={data.photo}
                     alt="picture of the project"
-                    objectFit="cover"
-                    layout="fill"
-                    priority={true}
+                    style={{ objectFit: "cover" }}
+                    fill
+                    priority
                   />
                 </div>
               )
@@ -43,7 +43,7 @@ function ProjectLists() {
           >
             <div className="text-textPrimary dark:dark gradient-text">WORK</div>
             <div className="text-textPrimary dark:text-blue-600">
-              {lists.length}
+              {workLists.length}
             </div>
           </motion.div>
           <motion.div
@@ -64,6 +64,11 @@ function ProjectLists() {
                   <div className="flex flex-row items-center relative -left-6 text-xl w-full text-textPrimary bg-transparent cursor-pointer truncate group-hover:pl-6 duration-300 group-hover:text-white dark:group-hover:text-red-300 ">
                     <AiOutlineArrowRight className="text-2xl" />
                     {data.name}
+                    <span className="ml-3 animate-pulse text-yellow-300">
+                      {Number(data.productionYear) === new Date().getFullYear()
+                        ? "New!!"
+                        : ""}
+                    </span>
                   </div>
                 </div>
               </Link>

@@ -8,7 +8,7 @@ function About() {
     <div className="mx-auto h-screen max-w-7xl">
       <div className="relative flex flex-col pt-52 px-5 lg:p-52 w-full">
         <div className="absolute top-0 left-0 w-full lg:w-[50%] h-full z-[-1] hidden dark:block">
-          <div className="relative h-full w-full lg:translate-x-[50%] translate-y-32 sm:-rotate-[30deg] opacity-30">
+          <div className="relative h-full w-full lg:translate-x-[50%] translate-y-32 sm:-rotate-[30deg] opacity-20">
             <Image
               src={gods}
               alt="gods"

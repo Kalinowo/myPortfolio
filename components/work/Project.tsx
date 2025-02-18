@@ -12,6 +12,7 @@ interface ProjectProps {
 const Project: React.FC<ProjectProps> = (props) => {
   const { projectName } = props;
   const [titleModal, setTitleModal] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const getProject = workLists.find((data) => data.name === projectName);
 
@@ -46,20 +47,29 @@ const Project: React.FC<ProjectProps> = (props) => {
         {"(" + getProject?.description + ")"}
       </div>
       {/* 使用方法container */}
-      <div className="flex flex-row px-5">
-        <div className="hidden lg:flex justify-center items-center w-[100%] sm:w-[80%] mx-auto">
-          <Embla photos={slides} />
+      <div className="flex flex-row px-5 gap-3">
+        <div className="hidden lg:flex justify-center items-center w-[100%] sm:basis-[60%] flex-shrink-0">
+          <Embla
+            photos={slides}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+          />
         </div>
-        <div className="text-textPrimary flex flex-col pl-10 gap-5 text-2xl sm:text-3xl">
-          <div className="relative -left-5 -bottom-2">使用方式：</div>
-          {getProject?.instruction?.map((data, idx) => (
-            <div key={idx} className="pl-5">
-              {idx + 1}.{data}
-            </div>
-          ))}
+        <div className="text-textPrimary flex flex-col text-2xl sm:text-3xl sm:flex-grow overflow-hidden h-full">
+          <div className="break-words">
+            {getProject?.instruction[selectedIndex]}
+          </div>
         </div>
       </div>
       <br />
+      {/* mobile view */}
+      <div className="flex lg:hidden justify-center items-center w-[100%] sm:w-[80%] mx-auto">
+        <Embla
+          photos={slides}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
+        />
+      </div>
       <TechStack tech={getProject?.techStack} />
       <br />
       <div className="flex justify-center items-center text-xl text-textPrimary font-bold mx-auto ">
@@ -73,10 +83,6 @@ const Project: React.FC<ProjectProps> = (props) => {
         </a>
       </div>
       <br />
-      {/* mobile view */}
-      <div className="flex lg:hidden justify-center items-center w-[100%] sm:w-[80%] mx-auto">
-        <Embla photos={slides} />
-      </div>
     </>
   );
 };
