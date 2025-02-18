@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ProjectLists from "@/components/work/ProjectLists";
 
 function Work() {
